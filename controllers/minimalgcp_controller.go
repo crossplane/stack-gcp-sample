@@ -17,12 +17,16 @@ limitations under the License.
 package controllers
 
 import (
-	"context"
+	"fmt"
 
 	"github.com/go-logr/logr"
+	"github.com/muvaf/configuration-stacks/pkg/controllers"
+	"github.com/muvaf/configuration-stacks/pkg/resource"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/kustomize/api/resid"
+	"sigs.k8s.io/kustomize/api/types"
 
 	gcpv1alpha1 "github.com/crossplaneio/minimal-gcp/api/v1alpha1"
 )
@@ -34,20 +38,66 @@ type MinimalGCPReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-// +kubebuilder:rbac:groups=gcp.resourcepacks.crossplane.io,resources=minimalgcps,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=gcp.resourcepacks.crossplane.io,resources=minimalgcps/status,verbs=get;update;patch
-
-func (r *MinimalGCPReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	_ = context.Background()
-	_ = r.Log.WithValues("minimalgcp", req.NamespacedName)
-
-	// your logic here
-
-	return ctrl.Result{}, nil
-}
-
 func (r *MinimalGCPReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	csr := controllers.NewConfigurationStackReconciler(mgr, gcpv1alpha1.MinimalGCPGroupVersionKind,
+		controllers.AdditionalKustomizationPatcher(resource.KustomizationPatcherFunc(AddVariants)))
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&gcpv1alpha1.MinimalGCP{}).
-		Complete(r)
+		Complete(csr)
+}
+
+func AddVariants(resource resource.ParentResource, k *types.Kustomization) error {
+	cr, ok := resource.(*gcpv1alpha1.MinimalGCP)
+	if !ok {
+		return fmt.Errorf("the resource is not of type %s", gcpv1alpha1.MinimalGCPGroupVersionKind)
+	}
+	ref := types.Target{
+		Gvk: resid.Gvk{
+			Group:   cr.GroupVersionKind().Group,
+			Version: cr.GroupVersionKind().Version,
+			Kind:    cr.GroupVersionKind().Kind,
+		},
+		Name:      cr.GetName(),
+		Namespace: cr.GetNamespace(),
+	}
+
+	variants := []types.Var{
+		{
+			Name:   "REGION",
+			ObjRef: ref,
+			FieldRef: types.FieldSelector{
+				FieldPath: "spec.region",
+			},
+		},
+		{
+			Name:   "GCP_PROJECT_ID",
+			ObjRef: ref,
+			FieldRef: types.FieldSelector{
+				FieldPath: "spec.projectID",
+			},
+		},
+		{
+			Name:   "CRED_SECRET_KEY",
+			ObjRef: ref,
+			FieldRef: types.FieldSelector{
+				FieldPath: "spec.credentialsSecretRef.key",
+			},
+		},
+		{
+			Name:   "CRED_SECRET_NAME",
+			ObjRef: ref,
+			FieldRef: types.FieldSelector{
+				FieldPath: "spec.credentialsSecretRef.name",
+			},
+		},
+		{
+			Name:   "CRED_SECRET_NAMESPACE",
+			ObjRef: ref,
+			FieldRef: types.FieldSelector{
+				FieldPath: "spec.credentialsSecretRef.namespace",
+			},
+		},
+	}
+	k.Vars = append(k.Vars, variants...)
+	return nil
 }

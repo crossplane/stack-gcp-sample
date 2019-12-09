@@ -17,29 +17,40 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"github.com/crossplaneio/crossplane-runtime/apis/core/v1alpha1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
 // MinimalGCPSpec defines the desired state of MinimalGCP
 type MinimalGCPSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	// CredentialsSecretRef refers to the secret and its key that contains
+	// the required credentials to connect to GCP.
+	CredentialsSecretRef v1alpha1.SecretKeySelector `json:"credentialsSecretRef"`
 
-	// Foo is an example field of MinimalGCP. Edit MinimalGCP_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// ProjectID is the ID of the project in GCP that the resource will be
+	// provisioned in.
+	ProjectID string `json:"projectID"`
+
+	// Region of the resources that will be deployed.
+	Region string `json:"region"`
 }
 
 // MinimalGCPStatus defines the observed state of MinimalGCP
 type MinimalGCPStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	v1alpha1.ConditionedStatus `json:",inline"`
+}
+
+func (mg *MinimalGCP) GetCondition(ct v1alpha1.ConditionType) v1alpha1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+func (mg *MinimalGCP) SetConditions(c ...v1alpha1.Condition) {
+	mg.Status.SetConditions(c...)
 }
 
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:scope=Cluster
+// +kubebuilder:subresource:status
 
 // MinimalGCP is the Schema for the minimalgcps API
 type MinimalGCP struct {
