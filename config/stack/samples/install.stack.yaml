@@ -1,0 +1,7 @@
+---
+apiVersion: stacks.crossplane.io/v1alpha1
+kind: ClusterStackInstall
+metadata:
+  name: "crossplaneio-minimal-gcp"
+spec:
+  package: "crossplaneio/minimal-gcp"

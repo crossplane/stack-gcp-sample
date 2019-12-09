@@ -1,0 +1,6 @@
+spec:
+  template:
+    spec:
+      containers:
+      - name: "crossplaneio-minimal-gcp-controller"
+        image: "localhost:5000/crossplaneio/minimal-gcp"
