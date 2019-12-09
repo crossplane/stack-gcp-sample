@@ -3,6 +3,8 @@ apiVersion: cache.gcp.crossplane.io/v1beta1
 kind: CloudMemorystoreInstanceClass
 metadata:
   name: cloudmemorystore
+  annotations:
+    resourceclass.crossplane.io/is-default-class: "true"
 specTemplate:
   writeConnectionSecretsToNamespace: crossplane-system
   forProvider:

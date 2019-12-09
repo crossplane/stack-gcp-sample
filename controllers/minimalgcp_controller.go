@@ -20,13 +20,16 @@ import (
 	"fmt"
 
 	"github.com/go-logr/logr"
-	"github.com/muvaf/configuration-stacks/pkg/controllers"
-	"github.com/muvaf/configuration-stacks/pkg/resource"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/kustomize/api/resid"
 	"sigs.k8s.io/kustomize/api/types"
+
+	"github.com/crossplaneio/crossplane-runtime/apis/core/v1alpha1"
+	"github.com/crossplaneio/crossplane-runtime/pkg/meta"
+	"github.com/muvaf/configuration-stacks/pkg/controllers"
+	"github.com/muvaf/configuration-stacks/pkg/resource"
 
 	gcpv1alpha1 "github.com/crossplaneio/minimal-gcp/api/v1alpha1"
 )
@@ -40,7 +43,8 @@ type MinimalGCPReconciler struct {
 
 func (r *MinimalGCPReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	csr := controllers.NewConfigurationStackReconciler(mgr, gcpv1alpha1.MinimalGCPGroupVersionKind,
-		controllers.AdditionalKustomizationPatcher(resource.KustomizationPatcherFunc(AddVariants)))
+		controllers.AdditionalKustomizationPatcher(resource.KustomizationPatcherFunc(AddVariants)),
+		controllers.AdditionalChildResourcePatcher(resource.ChildResourcePatcherFunc(PatchDefaultingAnnotations)))
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&gcpv1alpha1.MinimalGCP{}).
 		Complete(csr)
@@ -49,7 +53,7 @@ func (r *MinimalGCPReconciler) SetupWithManager(mgr ctrl.Manager) error {
 func AddVariants(resource resource.ParentResource, k *types.Kustomization) error {
 	cr, ok := resource.(*gcpv1alpha1.MinimalGCP)
 	if !ok {
-		return fmt.Errorf("the resource is not of type %s", gcpv1alpha1.MinimalGCPGroupVersionKind)
+		return fmt.Errorf("the custom resource instance is not of type %s", gcpv1alpha1.MinimalGCPGroupVersionKind)
 	}
 	ref := types.Target{
 		Gvk: resid.Gvk{
@@ -100,4 +104,18 @@ func AddVariants(resource resource.ParentResource, k *types.Kustomization) error
 	}
 	k.Vars = append(k.Vars, variants...)
 	return nil
+}
+
+func PatchDefaultingAnnotations(resource resource.ParentResource, list []resource.ChildResource) ([]resource.ChildResource, error) {
+	cr, ok := resource.(*gcpv1alpha1.MinimalGCP)
+	if !ok {
+		return nil, fmt.Errorf("the custom resource instance is not of type %s", gcpv1alpha1.MinimalGCPGroupVersionKind)
+	}
+	if cr.Spec.KeepDefaultingAnnotations {
+		return list, nil
+	}
+	for _, res := range list {
+		meta.RemoveAnnotations(res, v1alpha1.AnnotationDefaultClassKey)
+	}
+	return list, nil
 }
