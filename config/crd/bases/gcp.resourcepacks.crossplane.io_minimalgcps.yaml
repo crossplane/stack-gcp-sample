@@ -50,11 +50,6 @@ spec:
               - name
               - namespace
               type: object
-            keepDefaultingAnnotations:
-              description: KeepDefaultingAnnotations removes the annotation with key
-                resourceclass.crossplane.io/is-default-class from all resources if
-                its value is false. Otherwise, it keeps them.
-              type: boolean
             projectID:
               description: ProjectID is the ID of the project in GCP that the resource
                 will be provisioned in.

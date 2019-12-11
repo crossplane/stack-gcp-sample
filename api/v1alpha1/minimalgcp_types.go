@@ -33,11 +33,6 @@ type MinimalGCPSpec struct {
 
 	// Region of the resources that will be deployed.
 	Region string `json:"region"`
-
-	// KeepDefaultingAnnotations removes the annotation with key
-	// resourceclass.crossplane.io/is-default-class from all resources if its
-	// value is false. Otherwise, it keeps them.
-	KeepDefaultingAnnotations bool `json:"keepDefaultingAnnotations,omitempty"`
 }
 
 // MinimalGCPStatus defines the observed state of MinimalGCP
