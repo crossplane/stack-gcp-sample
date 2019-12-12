@@ -23,7 +23,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
 	gcpv1alpha1 "github.com/crossplaneio/minimal-gcp/api/v1alpha1"
-	"github.com/muvaf/configuration-stacks/pkg/controllers"
+	"github.com/muvaf/crossplane-resourcepacks/pkg/controllers"
 )
 
 // MinimalGCPReconciler reconciles a MinimalGCP object
