@@ -34,7 +34,7 @@ type MinimalGCPReconciler struct {
 }
 
 func (r *MinimalGCPReconciler) SetupWithManager(mgr ctrl.Manager) error {
-	csr := controllers.NewResurcePackReconciler(mgr, gcpv1alpha1.MinimalGCPGroupVersionKind)
+	csr := controllers.NewResourcePackReconciler(mgr, gcpv1alpha1.MinimalGCPGroupVersionKind)
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&gcpv1alpha1.MinimalGCP{}).
 		Complete(csr)

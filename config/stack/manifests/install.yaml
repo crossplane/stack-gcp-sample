@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "crossplaneio-minimal-gcp-controller"
-        image: "crossplaneio/minimal-gcp"
+        image: "registry.upbound.io/muvaf/minimal-gcp"
         env:
         - name: POD_NAME
           valueFrom:
