@@ -1,20 +1,24 @@
-title: ""
+title: "Minimal GCP Environment Stack"
 readme: ""
-overview: ""
-overviewShort: ""
+overview: "This stack provisions a private network and creates resource classes that has minimal node settings and refer to that private network."
+overviewShort: "Start using GCP with Crossplane without needing to create your own resource classes!"
 version: 0.0.1
 maintainers:
-- name: ""
-  email: ""
+- name: "Muvaffak Onus"
+  email: "monus@upbound.io"
 owners:
-- name: ""
-  email: ""
-company: ""
-category: ""
+- name: "Muvaffak Onus"
+  email: "monus@upbound.io"
+company: "Upbound"
+category: "Environment Stacks"
 keywords:
- - "crossplane-cli"
-website: ""
-source: ""
+ - "easy"
+ - "resource class"
+ - "private network"
+ - "cheap"
+ - "minimal"
+website: "httos://upbound.io"
+source: "https://github.com/muvaf/minimal-gcp"
 permissionScope: Cluster
 # License SPDX name: https://spdx.org/licenses/
 license: Apache-2.0

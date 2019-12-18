@@ -1,0 +1,20 @@
+# This file is used to define a custom transformers for our CRDs so that Kustomize
+# can resolve the cross-resource object references.
+# See https://github.com/kubernetes-sigs/kustomize/blob/master/examples/transformerconfigs/crd/README.md
+
+# nameReference is used to declare which kind's name is referred in which resources.
+nameReference:
+  - kind: Network
+    fieldSpecs:
+      - path: specTemplate/forProvider/settings/ipConfiguration/privateNetworkRef/name
+        kind: CloudSQLInstanceClass
+  - kind: Provider
+    fieldSpecs:
+      - path: specTemplate/providerRef/name
+        kind: CloudSQLInstanceClass
+
+# varReference is the list of fields that we tell Kustomize to process for
+# variants.
+varReference:
+  - path: specTemplate/forProvider/region
+    kind: CloudSQLInstanceClass
