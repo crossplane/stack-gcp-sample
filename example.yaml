@@ -1,0 +1,13 @@
+apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
+kind: MinimalGCP
+metadata:
+  name: test-minimal
+  annotations:
+    "resourcepacks.crossplane.io/keep-defaulting-annotations": "true"
+spec:
+  region: us-west2
+  projectID: crossplane-playground
+  credentialsSecretRef:
+    name: gcp-account-creds
+    namespace: crossplane-system
+    key: credentials
