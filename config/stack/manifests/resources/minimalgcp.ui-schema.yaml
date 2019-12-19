@@ -1,4 +1,4 @@
-version: 0.1
+version: 0.3
 configSections:
   - title: Minimal GCP Configuration
     description: Enter the configuration parameters for your resource pack.
