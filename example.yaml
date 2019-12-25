@@ -1,7 +1,7 @@
 apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
 kind: MinimalGCP
 metadata:
-  name: test-minimal
+  name: test
   annotations:
     "resourcepacks.crossplane.io/keep-defaulting-annotations": "true"
 spec:
