@@ -6,3 +6,12 @@ resources:
   - database
   - servicenetworking
   - provider.yaml
+  - common.yaml
+vars:
+  - name: REGION
+    objref:
+      kind: ConfigMap
+      apiVersion: v1
+      name: gcp-config
+    fieldref:
+      fieldpath: data.region
