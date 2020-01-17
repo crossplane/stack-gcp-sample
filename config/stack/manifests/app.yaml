@@ -2,7 +2,7 @@ title: "Minimal GCP Environment"
 readme: ""
 overview: "This stack provisions a private network and creates resource classes that has minimal node settings and refer to that private network."
 overviewShort: "Start using GCP with Crossplane without needing to create your own resource classes!"
-version: 1.0
+version: 0.0.1
 maintainers:
 - name: "Muvaffak Onus"
   email: "monus@upbound.io"
