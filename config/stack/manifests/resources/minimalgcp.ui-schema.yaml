@@ -8,11 +8,12 @@ configSections:
     type: string
     path: .spec.projectID
     title: Project ID
-    pattern: ^[a-z][-A-Za-z0-9]{5,29}$
     validation:
     - required: true
     - minLength: 6
     - maxLength: 30
+    - pattern: ^[a-z][-A-Za-z0-9]{5,29}$
+      customError: A Project ID must start with a lowercase letter, and can contain only ASCII letters, digits, and hyphens, and must be between 6 and 30 characters.
   - name: region
     controlType: singleSelect
     path: .spec.region
