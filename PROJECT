@@ -1,5 +1,5 @@
 domain: resourcepacks.crossplane.io
-repo: github.com/crossplaneio/minimal-gcp
+repo: github.com/crossplaneio/stack-minimal-gcp
 resources:
 - group: gcp
   kind: MinimalGCP

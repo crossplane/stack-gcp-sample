@@ -20,8 +20,8 @@ import (
 	"flag"
 	"os"
 
-	gcpv1alpha1 "github.com/crossplaneio/minimal-gcp/api/v1alpha1"
-	"github.com/crossplaneio/minimal-gcp/controllers"
+	gcpv1alpha1 "github.com/crossplaneio/stack-minimal-gcp/api/v1alpha1"
+	"github.com/crossplaneio/stack-minimal-gcp/controllers"
 	"k8s.io/apimachinery/pkg/runtime"
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
