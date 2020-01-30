@@ -1,7 +1,0 @@
-apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
-kind: MinimalGCP
-metadata:
-  name: minimalgcp-sample
-spec:
-  # Add fields here
-  foo: bar

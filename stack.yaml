@@ -1,0 +1,61 @@
+---
+apiVersion: stacks.crossplane.io/v1alpha1
+kind: StackDefinition
+metadata:
+  name: 'minimal-gcp'
+spec:
+  title: "Minimal GCP Environment"
+  readme: ""
+  overview: "This stack provisions a private network and creates resource classes that has minimal node settings and refer to that private network."
+  overviewShort: "Start using GCP with Crossplane without needing to create your own resource classes!"
+  version: 0.0.2
+  maintainers:
+  - name: "Muvaffak Onus"
+    email: "monus@upbound.io"
+  owners:
+  - name: "Muvaffak Onus"
+    email: "monus@upbound.io"
+  company: "Upbound"
+  category: "Environment Stack"
+  keywords:
+   - "easy"
+   - "resource class"
+   - "private network"
+   - "cheap"
+   - "minimal"
+  website: "httos://upbound.io"
+  source: "https://github.com/crossplaneio/stack-minimal-gcp"
+  permissionScope: Cluster
+  dependsOn:
+    - crd: '*.cache.gcp.crossplane.io/v1beta1'
+    - crd: '*.compute.gcp.crossplane.io/v1alpha3'
+    - crd: '*.database.gcp.crossplane.io/v1beta1'
+    - crd: '*.storage.gcp.crossplane.io/v1alpha3'
+    - crd: '*.servicenetworking.gcp.crossplane.io/v1alpha3'
+    - crd: '*.gcp.crossplane.io/v1alpha3'
+  # License SPDX name: https://spdx.org/licenses/
+  license: Apache-2.0
+  behavior:
+   source:
+    image: crossplaneio/stack-minimal-gcp:0.0.2
+    path: "kustomize"
+   crd:
+    kind: MinimalGCP
+    apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
+   engineConfiguration:
+    type: kustomize
+    overlays:
+     - apiVersion: gcp.crossplane.io/v1alpha3
+       kind: Provider
+       name: gcp-provider
+       bindings:
+        - from: "spec.credentialsSecretRef"
+          to: "spec.credentialsSecretRef"
+        - from: "spec.projectID"
+          to: "spec.projectID"
+     - apiVersion: v1
+       kind: ConfigMap
+       name: gcp-config
+       bindings:
+        - from: "spec.region"
+          to: "data.region"
