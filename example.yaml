@@ -3,7 +3,7 @@ kind: MinimalGCP
 metadata:
   name: test
   annotations:
-    "resourcepacks.crossplane.io/keep-defaulting-annotations": "true"
+    "templatestacks.crossplane.io/remove-defaulting-annotations": "false"
 spec:
   region: us-west2
   projectID: crossplane-playground

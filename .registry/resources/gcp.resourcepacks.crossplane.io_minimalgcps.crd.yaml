@@ -5,6 +5,7 @@ metadata:
   creationTimestamp: null
   name: minimalgcps.gcp.resourcepacks.crossplane.io
 spec:
+  preserveUnknownFields: true
   group: gcp.resourcepacks.crossplane.io
   names:
     kind: MinimalGCP
