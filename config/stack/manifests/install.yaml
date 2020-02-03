@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "crossplaneio-stack-minimal-gcp-controller"
-        image: "crossplaneio/stack-minimal-gcp:latest"
+        image: "crossplane/stack-minimal-gcp:latest"
         env:
         - name: POD_NAME
           valueFrom:
