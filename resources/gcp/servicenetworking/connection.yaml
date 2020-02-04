@@ -3,11 +3,12 @@ kind: Connection
 metadata:
   name: connection
 spec:
-  parent: services/servicenetworking.googleapis.com
-  networkRef:
-    name: network
-  reservedPeeringRangeRefs:
-    - name: globaladdress
+  forProvider:
+    parent: services/servicenetworking.googleapis.com
+    networkRef:
+      name: network
+    reservedPeeringRangeRefs:
+      - name: globaladdress
   reclaimPolicy: Delete
   providerRef:
     name: gcp-provider
