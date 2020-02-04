@@ -1,4 +1,4 @@
-apiVersion: servicenetworking.gcp.crossplane.io/v1alpha3
+apiVersion: servicenetworking.gcp.crossplane.io/v1beta1
 kind: Connection
 metadata:
   name: connection
