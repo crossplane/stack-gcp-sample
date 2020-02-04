@@ -1,12 +1,12 @@
-behavior:
-  source:
-    image: crossplaneio/stack-minimal-gcp:0.0.2
-    path: "kustomize"
-  crd:
-    kind: MinimalGCP
-    apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
-  engineConfiguration:
-    type: kustomize
+source:
+  image: crossplane/stack-minimal-gcp:0.0.2
+  path: "kustomize"
+crd:
+  kind: MinimalGCP
+  apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
+engine:
+  type: kustomize
+  kustomize:
     overlays:
       - apiVersion: gcp.crossplane.io/v1alpha3
         kind: Provider
