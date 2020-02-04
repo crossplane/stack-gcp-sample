@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "crossplaneio-stack-minimal-gcp"
+  name: "stack-minimal-gcp"
   labels:
-    core.crossplane.io/name: "crossplaneio-stack-minimal-gcp"
+    core.crossplane.io/name: "stack-minimal-gcp"
 spec:
   selector:
     matchLabels:
-      core.crossplane.io/name: "crossplaneio-stack-minimal-gcp"
+      core.crossplane.io/name: "stack-minimal-gcp"
   replicas: 1
   template:
     metadata:
-      name: "crossplaneio-stack-minimal-gcp-controller"
+      name: "stack-minimal-gcp-controller"
       labels:
-        core.crossplane.io/name: "crossplaneio-stack-minimal-gcp"
+        core.crossplane.io/name: "stack-minimal-gcp"
     spec:
       containers:
-      - name: "crossplaneio-stack-minimal-gcp-controller"
+      - name: "stack-minimal-gcp-controller"
         image: "crossplane/stack-minimal-gcp:latest"
         env:
         - name: POD_NAME
