@@ -20,6 +20,10 @@ nameReference:
         kind: Subnetwork
       - path: specTemplate/subnetworkRef/name
         kind: GKEClusterClass
+  - kind: GlobalAddress
+    fieldSpecs:
+      - path: spec/name
+      - kind: GlobalAddress
   - kind: Provider
     fieldSpecs:
       - path: spec/providerRef/name

@@ -6,11 +6,11 @@
 nameReference:
   - kind: Network
     fieldSpecs:
-      - path: spec/networkRef/name
+      - path: spec/forProvider/networkRef/name
         kind: Connection
   - kind: GlobalAddress
     fieldSpecs:
-      - path: spec/reservedPeeringRangeRefs/name
+      - path: spec/forProvider/reservedPeeringRangeRefs/name
         kind: Connection
   - kind: Provider
     fieldSpecs:
