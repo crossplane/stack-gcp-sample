@@ -2,5 +2,5 @@ spec:
   template:
     spec:
       containers:
-      - name: "crossplaneio-stack-minimal-gcp-controller"
+      - name: "stack-minimal-gcp-controller"
         image: "localhost:5000/crossplaneio/stack-minimal-gcp"
