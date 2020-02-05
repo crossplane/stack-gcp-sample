@@ -64,6 +64,4 @@ configSections:
     validation:
     - required: true
 initialConfig: true
-printerColumns:
-  Ready: .status.conditionedStatus.conditions[?(@.type=='Synced')]
 singletonResourceName: Minimal GCP Instance
