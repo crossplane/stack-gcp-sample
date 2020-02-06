@@ -9,7 +9,7 @@ specTemplate:
   writeConnectionSecretsToNamespace: crossplane-system
   forProvider:
     tier: STANDARD_HA
-    region: $(REGION)
+    region: us-central1
     memorySizeGb: 1
   providerRef:
     name: gcp-provider

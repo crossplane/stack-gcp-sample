@@ -3,3 +3,12 @@ configurations:
 
 resources:
   - cloudmemorystoreinstance.yaml
+
+vars:
+  - name: REGION
+    objref:
+      kind: CloudMemorystoreInstanceClass
+      apiVersion: cache.gcp.crossplane.io/v1beta1
+      name: cloudmemorystore
+    fieldref:
+      fieldpath: specTemplate.forProvider.region

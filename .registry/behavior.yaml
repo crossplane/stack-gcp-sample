@@ -16,9 +16,9 @@ engine:
             to: "spec.credentialsSecretRef"
           - from: "spec.projectID"
             to: "spec.projectID"
-      - apiVersion: v1
-        kind: ConfigMap
-        name: gcp-config
+      - apiVersion: cache.gcp.crossplane.io/v1beta1
+        kind: CloudMemorystoreInstanceClass
+        name: cloudmemorystore
         bindings:
           - from: "spec.region"
-            to: "data.region"
+            to: "specTemplate.forProvider.region"
