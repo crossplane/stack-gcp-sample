@@ -1,4 +1,4 @@
-IMG ?= "stack-minimal-gcp"
+IMG ?= "crossplane/stack-minimal-gcp"
 VERSION ?= "0.0.2"
 
 make:
