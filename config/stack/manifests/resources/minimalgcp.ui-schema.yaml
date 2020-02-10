@@ -64,4 +64,3 @@ configSections:
     validation:
     - required: true
 initialConfig: true
-singletonResourceName: Minimal GCP Instance
