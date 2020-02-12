@@ -34,10 +34,6 @@ nameReference:
         kind: GlobalAddress
       - path: specTemplate/providerRef/name
         kind: GKEClusterClass
-  - kind: GlobalAddress
-    fieldSpecs:
-      - path: spec/name
-      - kind: GlobalAddress
 
 
 # varReference is the list of fields that we tell Kustomize to process for

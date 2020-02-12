@@ -1,5 +1,5 @@
 IMG ?= "crossplane/stack-minimal-gcp"
 VERSION ?= "0.0.2"
 
-make:
+build:
 	docker build . -t ${IMG}:${VERSION}

@@ -17,7 +17,7 @@ keywords:
   - "private network"
   - "cheap"
   - "minimal"
-website: "httos://upbound.io"
+website: "https://upbound.io"
 source: "https://github.com/crossplaneio/stack-minimal-gcp"
 permissionScope: Cluster
 dependsOn:
