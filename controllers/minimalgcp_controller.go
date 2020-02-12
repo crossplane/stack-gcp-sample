@@ -22,8 +22,8 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
+	"github.com/crossplaneio/resourcepacks/pkg/controllers"
 	gcpv1alpha1 "github.com/crossplaneio/stack-minimal-gcp/api/v1alpha1"
-	"github.com/crossplaneio/templating-controller/pkg/controllers"
 )
 
 // MinimalGCPReconciler reconciles a MinimalGCP object
@@ -34,7 +34,7 @@ type MinimalGCPReconciler struct {
 }
 
 func (r *MinimalGCPReconciler) SetupWithManager(mgr ctrl.Manager) error {
-	csr := controllers.NewTemplatingReconciler(mgr, gcpv1alpha1.MinimalGCPGroupVersionKind)
+	csr := controllers.NewResourcePackReconciler(mgr, gcpv1alpha1.MinimalGCPGroupVersionKind)
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&gcpv1alpha1.MinimalGCP{}).
 		Complete(csr)
