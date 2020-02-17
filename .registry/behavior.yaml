@@ -1,0 +1,24 @@
+source:
+  image: crossplane/stack-minimal-gcp:0.1.0
+  path: "kustomize"
+crd:
+  kind: MinimalGCP
+  apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
+engine:
+  type: kustomize
+  kustomize:
+    overlays:
+      - apiVersion: gcp.crossplane.io/v1alpha3
+        kind: Provider
+        name: gcp-provider
+        bindings:
+          - from: "spec.credentialsSecretRef"
+            to: "spec.credentialsSecretRef"
+          - from: "spec.projectID"
+            to: "spec.projectID"
+      - apiVersion: cache.gcp.crossplane.io/v1beta1
+        kind: CloudMemorystoreInstanceClass
+        name: cloudmemorystore
+        bindings:
+          - from: "spec.region"
+            to: "specTemplate.forProvider.region"

@@ -1,8 +1,0 @@
-configurations:
-  - kustomizeconfig.yaml
-resources:
-  - cache
-  - compute
-  - database
-  - servicenetworking
-  - provider.yaml
