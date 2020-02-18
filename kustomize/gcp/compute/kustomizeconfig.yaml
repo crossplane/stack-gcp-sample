@@ -6,9 +6,9 @@
 nameReference:
   - kind: Network
     fieldSpecs:
-      - path: spec/networkRef/name
+      - path: spec/forProvider/networkRef/name
         kind: Subnetwork
-      - path: spec/networkRef/name
+      - path: spec/forProvider/networkRef/name
         kind: GlobalAddress
       - path: specTemplate/networkRef/name
         kind: GKEClusterClass
