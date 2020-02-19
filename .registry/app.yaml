@@ -18,7 +18,7 @@ keywords:
   - "cheap"
   - "minimal"
 website: "https://upbound.io"
-source: "https://github.com/crossplaneio/stack-minimal-gcp"
+source: "https://github.com/crossplane/stack-minimal-gcp"
 permissionScope: Cluster
 dependsOn:
   - crd: '*.cache.gcp.crossplane.io/v1beta1'
