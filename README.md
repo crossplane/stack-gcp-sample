@@ -8,7 +8,7 @@ network.
 
 Requirements:
 * Crossplane should be installed.
-* [GCP Stack](https://github.com/crossplaneio/stack-gcp) should be installed and its version should be at least 0.6.0
+* [GCP Stack](https://github.com/crossplane/stack-gcp) should be installed and its version should be at least 0.6.0
 
 If you have crossplane-cli installed, you can use the following command to install:
 
@@ -70,10 +70,10 @@ docker save "crossplane/stack-minimal-gcp:<version>" | (eval "$(minikube docker-
 
 After running this, you can use the [installation](#installation) command and the image loaded into minikube node will be picked up. 
 
-[network]: https://github.com/crossplaneio/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#network
-[subnetwork]: https://github.com/crossplaneio/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#subnetwork
-[global-address]: https://github.com/crossplaneio/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#globaladdress
+[network]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#network
+[subnetwork]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#subnetwork
+[global-address]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#globaladdress
 [connection]: https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections
-[gkecluster-class]: https://github.com/crossplaneio/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1alpha3.md#gkeclusterclass
-[cloudmemorystoreinstance-class]: https://github.com/crossplaneio/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/cache-gcp-crossplane-io-v1beta1.md#cloudmemorystoreinstanceclass
-[cloudsqlinstance-class]: https://github.com/crossplaneio/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/database-gcp-crossplane-io-v1beta1.md#cloudsqlinstanceclass
+[gkecluster-class]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1alpha3.md#gkeclusterclass
+[cloudmemorystoreinstance-class]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/cache-gcp-crossplane-io-v1beta1.md#cloudmemorystoreinstanceclass
+[cloudsqlinstance-class]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/database-gcp-crossplane-io-v1beta1.md#cloudsqlinstanceclass
