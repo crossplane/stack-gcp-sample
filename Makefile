@@ -1,5 +1,10 @@
-IMG ?= "crossplane/stack-minimal-gcp"
-VERSION ?= "0.2.1"
+STACK_VERSION ?= 0.2.1
+STACK_IMG ?= crossplane/stack-minimal-gcp:$(STACK_VERSION)
 
 build:
-	docker build . -t ${IMG}:${VERSION}
+	docker build . -t ${STACK_IMG}
+.PHONY: build
+
+publish:
+	docker push ${STACK_IMG}
+.PHONY: publish
