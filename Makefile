@@ -1,4 +1,4 @@
-STACK_VERSION ?= 0.2.1
+STACK_VERSION ?= v0.2.1
 STACK_IMG ?= crossplane/stack-minimal-gcp:$(STACK_VERSION)
 
 build:

@@ -1,4 +1,4 @@
-# Minimal GCP Template Stack
+# Minimal GCP Environment Stack
 
 You can use this stack to spin up a private network as well as
 resource classes that will let you provision resources in that
@@ -31,7 +31,19 @@ spec:
 
 # Usage Instructions
 
-You can create the following YAML to trigger creation of [`Network`][network], [`Subnetwork`][subnetwork], [`GlobalAddress`][global-address], [`Connection`][connection] resources as well as [`GKEClusterClass`][gkecluster-class], [`CloudSQLInstanceClass`][cloudsqlinstance-class], [`CloudMemorystoreInstanceClass`][cloudmemorystoreinstance-class] with minimal hardware requirements that can connect to those networking resources.
+You can create the following YAML to trigger creation of
+
+* [`Network`][network]
+* [`Subnetwork`][subnetwork]
+* [`GlobalAddress`][global-address]
+* [`Connection`][connection]
+* [`Provider`][provider] that points to credentials secret reference you supply
+
+and the following resource classes with minimal hardware requirements that will let you create instances that are connected to that network.
+
+* [`GKEClusterClass`][gkecluster-class]
+* [`CloudSQLInstanceClass`][cloudsqlinstance-class]
+* [`CloudMemorystoreInstanceClass`][cloudmemorystoreinstance-class]
 
 ```yaml
 apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
@@ -70,10 +82,11 @@ docker save "crossplane/stack-minimal-gcp:<version>" | (eval "$(minikube docker-
 
 After running this, you can use the [installation](#installation) command and the image loaded into minikube node will be picked up. 
 
-[network]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#network
-[subnetwork]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#subnetwork
-[global-address]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1beta1.md#globaladdress
-[connection]: https://cloud.google.com/service-infrastructure/docs/service-networking/reference/rest/v1/services.connections
-[gkecluster-class]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/compute-gcp-crossplane-io-v1alpha3.md#gkeclusterclass
-[cloudmemorystoreinstance-class]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/cache-gcp-crossplane-io-v1beta1.md#cloudmemorystoreinstanceclass
-[cloudsqlinstance-class]: https://github.com/crossplane/crossplane/blob/master/docs/api/crossplaneio/stack-gcp/database-gcp-crossplane-io-v1beta1.md#cloudsqlinstanceclass
+[network]: kustomize/gcp/compute/network.yaml
+[subnetwork]: kustomize/gcp/compute/subnetwork.yaml
+[global-address]: kustomize/gcp/compute/globaladdress.yaml
+[connection]: kustomize/gcp/servicenetworking/connection.yaml
+[provider]: kustomize/gcp/provider.yaml
+[gkecluster-class]: kustomize/gcp/compute/gkeclusterclass.yaml
+[cloudmemorystoreinstance-class]: kustomize/gcp/cache/cloudmemorystoreinstance.yaml
+[cloudsqlinstance-class]: kustomize/gcp/database/cloudsqlinstanceclass.yaml
