@@ -1,7 +1,7 @@
-version: v0.2.1
+version: v0.2.2
 configSections:
 - title: Provider Details
-  description: Provide the following details using an exisiting Google Cloud Project.
+  description: Provide the following details using an existing Google Cloud Project.
   items:
   - name: projectID
     controlType: singleInput
