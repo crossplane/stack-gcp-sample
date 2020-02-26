@@ -1,5 +1,5 @@
 source:
-  image: crossplane/stack-minimal-gcp:v0.2.1
+  image: crossplane/stack-minimal-gcp:v0.2.2
   path: "kustomize"
 crd:
   kind: MinimalGCP
