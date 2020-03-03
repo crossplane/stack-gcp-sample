@@ -2,7 +2,7 @@
 apiVersion: database.gcp.crossplane.io/v1beta1
 kind: CloudSQLInstanceClass
 metadata:
-  name: cloudsqlinstance-mysql
+  name: cloudsqlinstanceclass-mysql
   annotations:
     resourceclass.crossplane.io/is-default-class: "true"
 specTemplate:
@@ -25,7 +25,7 @@ specTemplate:
 apiVersion: database.gcp.crossplane.io/v1beta1
 kind: CloudSQLInstanceClass
 metadata:
-  name: cloudsqlinstance-postgresql
+  name: cloudsqlinstanceclass-postgresql
 specTemplate:
   writeConnectionSecretsToNamespace: crossplane-system
   providerRef:
