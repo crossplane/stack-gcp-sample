@@ -9,6 +9,6 @@ vars:
     objref:
       kind: CloudMemorystoreInstanceClass
       apiVersion: cache.gcp.crossplane.io/v1beta1
-      name: cloudmemorystore
+      name: cloudmemorystoreinstanceclass
     fieldref:
       fieldpath: specTemplate.forProvider.region

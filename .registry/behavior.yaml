@@ -19,7 +19,7 @@ engine:
             to: "spec.projectID"
       - apiVersion: cache.gcp.crossplane.io/v1beta1
         kind: CloudMemorystoreInstanceClass
-        name: cloudmemorystore
+        name: cloudmemorystoreinstanceclass
         bindings:
           - from: "spec.region"
             to: "specTemplate.forProvider.region"
