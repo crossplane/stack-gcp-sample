@@ -27,5 +27,6 @@ dependsOn:
   - crd: '*.storage.gcp.crossplane.io/v1alpha3'
   - crd: '*.servicenetworking.gcp.crossplane.io/v1alpha3'
   - crd: '*.gcp.crossplane.io/v1alpha3'
+  - package: 'crossplane/provider-gcp'
 # License SPDX name: https://spdx.org/licenses/
 license: Apache-2.0
