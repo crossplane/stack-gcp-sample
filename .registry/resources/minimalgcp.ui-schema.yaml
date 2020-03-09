@@ -43,7 +43,7 @@ configSections:
     validation:
     - required: true
 - title: Generate Provider Secret
-  description: A provider secret will need to be generated via the gcloud CLI tool using the following command. The gcloud CLI tool you can be [downloaded here](https://cloud.google.com/sdk/docs/downloads-interactive).
+  description: A provider secret will need to be generated via the gcloud CLI tool using the following command. The gcloud CLI tool can be [downloaded here](https://cloud.google.com/sdk/docs/downloads-interactive).
   items:
   - name: additionalInfoSnippet
     controlType: codeSnippet
