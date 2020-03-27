@@ -5,7 +5,7 @@ crd:
   apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
 engine:
   type: kustomize
-  controllerImage: crossplane/templating-controller:v0.2.1
+  controllerImage: crossplane/templating-controller:v0.3.0-rc
   kustomize:
     overlays:
       - apiVersion: gcp.crossplane.io/v1alpha3
