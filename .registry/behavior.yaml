@@ -1,7 +1,7 @@
 source:
   path: "kustomize"
 crd:
-  kind: MinimalGCP
+  kind: GCPSample
   apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
 engine:
   type: kustomize

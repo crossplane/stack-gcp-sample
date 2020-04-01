@@ -1,6 +1,6 @@
-id: minimalgcp
-title: Minimal GCP Environment
-titlePlural: Minimal GCP Environment
+id: gcpsample
+title: GCP Sample Environment
+titlePlural: GCP Sample Environment
 category: Environment
 overviewShort: |
   One click to install resource classes that are connected to each other in the

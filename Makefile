@@ -1,5 +1,5 @@
 STACK_VERSION ?= v0.2.3
-STACK_IMG ?= crossplane/stack-minimal-gcp:$(STACK_VERSION)
+STACK_IMG ?= crossplane/stack-gcp-sample:$(STACK_VERSION)
 
 build:
 	docker build . -t ${STACK_IMG}
