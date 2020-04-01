@@ -8,7 +8,7 @@ network.
 
 Requirements:
 * Crossplane should be installed.
-* [GCP Provider](https://github.com/crossplane/provider-gcp) should be installed and its version should be at least 0.6.0
+* [GCP Provider](https://github.com/crossplane/provider-gcp) should be installed and its version should be at least 0.7.0
 
 If you have crossplane-cli installed, you can use the following command to install:
 
