@@ -46,7 +46,7 @@ and the following resource classes with minimal hardware requirements that will 
 * [`CloudMemorystoreInstanceClass`][cloudmemorystoreinstance-class]
 
 ```yaml
-apiVersion: gcp.resourcepacks.crossplane.io/v1alpha1
+apiVersion: gcp.stacks.crossplane.io/v1alpha1
 kind: GCPSample
 metadata:
   name: test
