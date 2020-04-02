@@ -1,7 +1,7 @@
 id: gcpsample
-title: GCP Sample Environment
-titlePlural: GCP Sample Environment
-category: Environment
+title: GCP Sample Stack
+titlePlural: GCP Sample Stack
+category: Stack
 overviewShort: |
   One click to install resource classes that are connected to each other in the
   same network for all GCP resources.

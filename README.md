@@ -1,4 +1,4 @@
-# GCP Sample Environment Stack
+# GCP Sample Stack
 
 You can use this stack to spin up a private network as well as
 resource classes that will let you provision resources in that
