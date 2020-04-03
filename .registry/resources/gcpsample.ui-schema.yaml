@@ -1,4 +1,3 @@
-version: v0.2.3
 configSections:
 - title: Provider Details
   description: Provide the following details using an existing Google Cloud Project.

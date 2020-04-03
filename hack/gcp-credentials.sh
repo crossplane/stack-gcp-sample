@@ -3,7 +3,7 @@
 # Forked and modified from https://github.com/crossplane/crossplane/blob/master/cluster/examples/gcp-credentials.sh
 #
 # This is a helper script to create a project, service account, and credentials.json
-# file for use in the Minimal GCP Stack for Crossplane
+# file for use in the GCP Sample Stack for Crossplane
 #
 # gcloud is required for use and must be configured with privileges to perform these tasks
 #
@@ -74,9 +74,9 @@ for service in "${SERVICES[@]}"; do
 done
 
 # create service account
-SA_NAME="stack-gcp-minimal-$RAND"
+SA_NAME="stack-gcp-sample-$RAND"
 echo " * Creating a Service Account"
-gcloud --project $PROJECT_ID iam service-accounts create $SA_NAME --display-name "Crossplane GCP Minimal Stack SA" 2>&1 | tab
+gcloud --project $PROJECT_ID iam service-accounts create $SA_NAME --display-name "Crossplane GCP Sample Stack SA" 2>&1 | tab
 # export service account email
 SA="${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com"
 
@@ -100,7 +100,7 @@ cat <<EOS
 $CONTENTS
 ********************
 
-Your Minimal GCP Stack keyfile is shown above, between the asterisks.
+Your GCP Sample Stack keyfile is shown above, between the asterisks.
 EOS
 
 
