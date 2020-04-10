@@ -8,7 +8,7 @@ maintainers:
 owners:
   - name: "Muvaffak Onus"
     email: "monus@upbound.io"
-company: "Upbound"
+company: "Crossplane"
 category: "Sample Stack"
 packageType: "Stack"
 keywords:
@@ -16,7 +16,7 @@ keywords:
   - "resource class"
   - "private network"
   - "sample"
-website: "https://upbound.io"
+website: "https://crossplane.io"
 source: "https://github.com/crossplane/stack-gcp-sample"
 permissionScope: Cluster
 dependsOn:
