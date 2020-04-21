@@ -35,7 +35,7 @@ specTemplate:
     databaseVersion: POSTGRES_9_6
     region: $(REGION)
     settings:
-      tier: db-n1-standard-1
+      tier: db-custom-1-3840
       dataDiskType: PD_SSD
       dataDiskSizeGb: 10
       ipConfiguration:
