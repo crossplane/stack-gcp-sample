@@ -14,7 +14,7 @@ If you have crossplane-cli installed, you can use the following command to insta
 
 ```bash
 # Do not forget to change <version> with the correct version.
-kubectl crossplane stack install --cluster -n crossplane-system 'crossplane/stack-gcp-sample:<version>' gcp-sample
+kubectl crossplane package install --cluster -n crossplane-system 'crossplane/stack-gcp-sample:<version>' gcp-sample
 ```
 
 If you don't have crossplane-cli installed, you need to create the following YAML to install:

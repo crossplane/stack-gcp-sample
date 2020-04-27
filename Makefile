@@ -1,10 +1,10 @@
-STACK_VERSION ?= v0.2.3
-STACK_IMG ?= crossplane/stack-gcp-sample:$(STACK_VERSION)
+PACKAGE_VERSION ?= local
+PACKAGE_IMG ?= crossplane/stack-gcp-sample:$(PACKAGE_VERSION)
 
 build:
-	docker build . -t ${STACK_IMG}
+	docker build . -t ${PACKAGE_IMG}
 .PHONY: build
 
 publish:
-	docker push ${STACK_IMG}
+	docker push ${PACKAGE_IMG}
 .PHONY: publish
