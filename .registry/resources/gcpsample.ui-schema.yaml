@@ -46,7 +46,7 @@ configSections:
   items:
   - name: additionalInfoSnippet
     controlType: codeSnippet
-    codeText: curl -s https://raw.githubusercontent.com/crossplane/stack-minimal-gcp/master/hack/gcp-credentials.sh | PROJECT_ID=[PROJECT_ID] bash -
+    codeText: curl -s https://raw.githubusercontent.com/crossplane/stack-gcp-sample/master/hack/gcp-credentials.sh | PROJECT_ID=[PROJECT_ID] bash -
 - title: Enter Your Generated Provider Secret
   description: Once you have successfully generated the provider secret using the command above you can now enter it below.
   items:
