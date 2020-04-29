@@ -1,7 +1,28 @@
 title: "GCP Sample Stack"
-readme: ""
-overview: "This stack provisions a private network and creates resource classes that has minimal node settings and refer to that private network."
-overviewShort: "Start using GCP with Crossplane without needing to create your own resource classes!"
+overviewShort: |
+  Configures a GCP environment with basic networking, security,
+  and default resource classes for applications to use.
+overview: |
+  Configures a GCP environment with basic networking, security,
+  and default resource classes that provide a self-service catalog
+  for applications to use.
+readme: |
+  The `GCP Sample Stack` configures the neccesary cloud resources and
+  self-service catalog to deploy basic applications like `Wordpress`.
+
+  The managed resources configured by this stack include:
+  `Network`, `Subnetwork`, `GlobalAddress`, and `Connection`.
+
+  This stack offers the following resource classes for applications to
+  use: `GKEClusterClass`, `CloudSQLInstanceClass`, and
+  `CloudMemorystoreInstanceClass`.
+
+  The `GCP Sample Stack` also configures a `Provider` connection resource,
+  so the `GCP Provider` can communicate with GCP API.
+
+  [Learn More on GitHub](https://github.com/crossplane/stack-gcp-sample)
+  to see the complete `kustomize` templates used in this stack and
+  as a starting point for building your own stack.
 maintainers:
   - name: "Muvaffak Onus"
     email: "monus@upbound.io"
