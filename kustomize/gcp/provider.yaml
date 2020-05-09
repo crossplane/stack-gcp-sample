@@ -2,6 +2,8 @@ apiVersion: gcp.crossplane.io/v1alpha3
 kind: Provider
 metadata:
   name: gcp-provider
+  annotations:
+    templatestacks.crossplane.io/deletion-priority: "-1"
 spec:
   credentialsSecretRef:
     key: credentials
