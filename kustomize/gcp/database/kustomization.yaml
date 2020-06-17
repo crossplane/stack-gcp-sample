@@ -2,4 +2,4 @@ configurations:
   - kustomizeconfig.yaml
 
 resources:
-  - cloudsqlinstanceclass.yaml
+  - cloudsqlinstance-composition.yaml

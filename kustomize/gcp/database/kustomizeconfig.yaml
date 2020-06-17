@@ -6,15 +6,15 @@
 nameReference:
   - kind: Network
     fieldSpecs:
-      - path: specTemplate/forProvider/settings/ipConfiguration/privateNetworkRef/name
-        kind: CloudSQLInstanceClass
+      - path: spec/to/base/spec/forProvider/settings/ipConfiguration/privateNetworkRef/name
+        kind: Composition
   - kind: Provider
     fieldSpecs:
-      - path: specTemplate/providerRef/name
-        kind: CloudSQLInstanceClass
+      - path: spec/to/base/spec/providerRef/name
+        kind: Composition
 
 # varReference is the list of fields that we tell Kustomize to process for
 # variants.
 varReference:
-  - path: specTemplate/forProvider/region
-    kind: CloudSQLInstanceClass
+  - path: spec/to/base/spec/forProvider/region
+    kind: Composition
