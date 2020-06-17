@@ -1,0 +1,71 @@
+---
+apiVersion: apiextensions.crossplane.io/v1alpha1
+kind: Composition
+metadata:
+  name: gcp-cluster
+spec:
+  writeConnectionSecretsToNamespace: crossplane-system
+  reclaimPolicy: Delete
+  from:
+    apiVersion: common.crossplane.io/v1alpha1
+    kind: KubernetesCluster
+  to:
+    - base:
+        apiVersion: container.gcp.crossplane.io/v1beta1
+        kind: GKECluster
+        spec:
+          forProvider:
+            initialClusterVersion: 1.14
+            location: $(REGION)-b
+            masterAuth:
+              username: admin
+            ipAllocationPolicy:
+              useIpAliases: true
+              clusterSecondaryRangeName: pods
+              servicesSecondaryRangeName: services
+            subnetworkRef:
+              name: subnetwork
+            networkRef:
+              name: network
+          writeConnectionSecretToRef:
+            namespace: crossplane-system
+          providerRef:
+            name: gcp-provider
+      patches:
+        - fromFieldPath: "metadata.labels"
+          toFieldPath: "metadata.labels"
+        - fromFieldPath: "metadata.annotations[crossplane.io/external-name]"
+          toFieldPath: "metadata.annotations[crossplane.io/external-name]"
+        - fromFieldPath: "spec.reclaimPolicy"
+          toFieldPath: "spec.reclaimPolicy"
+        - fromFieldPath: "spec.version"
+          toFieldPath: "spec.forProvider.initialClusterVersion"
+        - fromFieldPath: "metadata.uid"
+          toFieldPath: "spec.writeConnectionSecretToRef.name"
+          transforms:
+            - type: string
+              string:
+                fmt: "%s-kubecfg"
+      connectionDetails:
+        - fromConnectionSecretKey: kubeconfig
+    - base:
+        apiVersion: container.gcp.crossplane.io/v1alpha1
+        kind: NodePool
+        spec:
+          forProvider:
+            locations:
+              - $(REGION)-b
+            initialNodeCount: 1
+            config:
+              machineType: n1-standard-1
+            clusterSelector:
+              matchControllerRef: true
+          providerRef:
+            name: gcp-provider
+      patches:
+        - fromFieldPath: "metadata.labels"
+          toFieldPath: "metadata.labels"
+        - fromFieldPath: "metadata.annotations[crossplane.io/external-name]"
+          toFieldPath: "metadata.annotations[crossplane.io/external-name]"
+        - fromFieldPath: "spec.reclaimPolicy"
+          toFieldPath: "spec.reclaimPolicy"

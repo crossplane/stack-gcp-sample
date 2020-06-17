@@ -10,12 +10,12 @@ nameReference:
         kind: Subnetwork
       - path: spec/forProvider/networkRef/name
         kind: GlobalAddress
-      - path: specTemplate/networkRef/name
-        kind: GKEClusterClass
+      - path: spec/to/base/spec/forProvider/networkRef/name
+        kind: Composition
   - kind: Subnetwork
     fieldSpecs:
-      - path: specTemplate/subnetworkRef/name
-        kind: GKEClusterClass
+      - path: spec/to/base/spec/forProvider/subnetworkRef/name
+        kind: Composition
   - kind: Provider
     fieldSpecs:
       - path: spec/providerRef/name
@@ -24,14 +24,16 @@ nameReference:
         kind: Subnetwork
       - path: spec/providerRef/name
         kind: GlobalAddress
-      - path: specTemplate/providerRef/name
-        kind: GKEClusterClass
+      - path: spec/to/base/spec/providerRef
+        kind: Composition
 
 
 # varReference is the list of fields that we tell Kustomize to process for
 # variants.
 varReference:
-  - path: specTemplate/zone
-    kind: GKEClusterClass
+  - path: spec/to/base/spec/forProvider/location
+    kind: Composition
+  - path: spec/to/base/spec/forProvider/locations
+    kind: Composition
   - path: spec/forProvider/region
     kind: Subnetwork
