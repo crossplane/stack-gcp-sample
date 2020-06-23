@@ -4,26 +4,14 @@
 
 # nameReference is used to declare which kind's name is referred in which resources.
 nameReference:
-  - kind: Network
+  - kind: PrivateNetwork
     fieldSpecs:
-      - path: spec/forProvider/networkRef/name
-        kind: Subnetwork
-      - path: spec/forProvider/networkRef/name
-        kind: GlobalAddress
-      - path: spec/to/base/spec/forProvider/networkRef/name
+      - path: spec/to/base/spec/forProvider/networkSelector/matchLabels/crossplane.io\/composite
         kind: Composition
-  - kind: Subnetwork
-    fieldSpecs:
-      - path: spec/to/base/spec/forProvider/subnetworkRef/name
+      - path: spec/to/base/spec/forProvider/networkSelector/matchLabels/crossplane.io\/composite
         kind: Composition
   - kind: Provider
     fieldSpecs:
-      - path: spec/providerRef/name
-        kind: Network
-      - path: spec/providerRef/name
-        kind: Subnetwork
-      - path: spec/providerRef/name
-        kind: GlobalAddress
       - path: spec/to/base/spec/providerRef
         kind: Composition
 
@@ -35,5 +23,5 @@ varReference:
     kind: Composition
   - path: spec/to/base/spec/forProvider/locations
     kind: Composition
-  - path: spec/forProvider/region
-    kind: Subnetwork
+  - path: spec/to/base/spec/forProvider/region
+    kind: Composition

@@ -23,8 +23,9 @@ spec:
               dataDiskSizeGb: 10
               ipConfiguration:
                 ipv4Enabled: false
-                privateNetworkRef:
-                  name: network
+                privateNetworkSelector:
+                  matchLabels:
+                    crossplane.io/composite: network
           writeConnectionSecretToRef:
             namespace: crossplane-system
           providerRef:

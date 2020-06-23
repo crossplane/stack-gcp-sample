@@ -4,9 +4,9 @@
 
 # nameReference is used to declare which kind's name is referred in which resources.
 nameReference:
-  - kind: Network
+  - kind: PrivateNetwork
     fieldSpecs:
-      - path: spec/to/base/spec/forProvider/settings/ipConfiguration/privateNetworkRef/name
+      - path: spec/to/base/spec/forProvider/settings/ipConfiguration/privateNetworkSelector/matchLabels/crossplane.io\/composite
         kind: Composition
   - kind: Provider
     fieldSpecs:

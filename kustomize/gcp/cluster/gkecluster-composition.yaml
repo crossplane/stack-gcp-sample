@@ -15,7 +15,7 @@ spec:
         kind: GKECluster
         spec:
           forProvider:
-            initialClusterVersion: 1.14
+            initialClusterVersion: "1.15"
             location: $(REGION)-b
             masterAuth:
               username: admin
@@ -23,10 +23,11 @@ spec:
               useIpAliases: true
               clusterSecondaryRangeName: pods
               servicesSecondaryRangeName: services
-            subnetworkRef:
-              name: subnetwork
-            networkRef:
-              name: network
+            subnetworkSelector:
+              matchControllerRef: true
+            networkSelector:
+              matchLabels:
+                crossplane.io/composite: network
           writeConnectionSecretToRef:
             namespace: crossplane-system
           providerRef:
@@ -65,7 +66,28 @@ spec:
       patches:
         - fromFieldPath: "metadata.labels"
           toFieldPath: "metadata.labels"
-        - fromFieldPath: "metadata.annotations[crossplane.io/external-name]"
-          toFieldPath: "metadata.annotations[crossplane.io/external-name]"
+        - fromFieldPath: "spec.reclaimPolicy"
+          toFieldPath: "spec.reclaimPolicy"
+    - base:
+        apiVersion: compute.gcp.crossplane.io/v1beta1
+        kind: Subnetwork
+        spec:
+          forProvider:
+            region: $(REGION)
+            ipCidrRange: "192.168.0.0/24"
+            privateIpGoogleAccess: true
+            secondaryIpRanges:
+              - rangeName: pods
+                ipCidrRange: 10.128.0.0/20
+              - rangeName: services
+                ipCidrRange: 172.16.0.0/16
+            networkSelector:
+              matchLabels:
+                crossplane.io/composite: network
+          providerRef:
+            name: gcp-provider
+      patches:
+        - fromFieldPath: "metadata.labels"
+          toFieldPath: "metadata.labels"
         - fromFieldPath: "spec.reclaimPolicy"
           toFieldPath: "spec.reclaimPolicy"
