@@ -41,12 +41,10 @@ website: "https://crossplane.io"
 source: "https://github.com/crossplane/stack-gcp-sample"
 permissionScope: Cluster
 dependsOn:
-  - crd: '*.cache.gcp.crossplane.io/v1beta1'
-  - crd: '*.compute.gcp.crossplane.io/v1alpha3'
-  - crd: '*.database.gcp.crossplane.io/v1beta1'
-  - crd: '*.storage.gcp.crossplane.io/v1alpha3'
-  - crd: '*.servicenetworking.gcp.crossplane.io/v1alpha3'
-  - crd: '*.gcp.crossplane.io/v1alpha3'
+  - crd: '*.gcpsample.gcp.stacks.crossplane.io'
+  - crd: '*.gcp.crossplane.io'
+  - crd: 'compositions.apiextensions.crossplane.io'
+  - crd: 'infrastructuredefinitions.apiextensions.crossplane.io'
   - package: 'crossplane/provider-gcp'
 # License SPDX name: https://spdx.org/licenses/
 license: Apache-2.0

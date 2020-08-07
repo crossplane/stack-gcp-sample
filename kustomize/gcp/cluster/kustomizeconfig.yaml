@@ -6,15 +6,22 @@
 nameReference:
   - kind: PrivateNetwork
     fieldSpecs:
-      - path: spec/to/base/spec/forProvider/settings/ipConfiguration/privateNetworkSelector/matchLabels/crossplane.io\/composite
+      - path: spec/to/base/spec/forProvider/networkSelector/matchLabels/crossplane.io\/composite
+        kind: Composition
+      - path: spec/to/base/spec/forProvider/networkSelector/matchLabels/crossplane.io\/composite
         kind: Composition
   - kind: Provider
     fieldSpecs:
-      - path: spec/to/base/spec/providerRef/name
+      - path: spec/to/base/spec/providerRef
         kind: Composition
+
 
 # varReference is the list of fields that we tell Kustomize to process for
 # variants.
 varReference:
+  - path: spec/to/base/spec/forProvider/location
+    kind: Composition
+  - path: spec/to/base/spec/forProvider/locations
+    kind: Composition
   - path: spec/to/base/spec/forProvider/region
     kind: Composition

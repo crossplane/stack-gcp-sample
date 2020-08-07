@@ -1,8 +1,7 @@
 configurations:
   - kustomizeconfig.yaml
 resources:
-  - cache
-  - compute
+  - cluster
   - database
-  - servicenetworking
+  - network
   - provider.yaml

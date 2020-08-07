@@ -2,4 +2,4 @@ configurations:
   - kustomizeconfig.yaml
 
 resources:
-  - connection.yaml
+  - gkecluster-composition.yaml
